@@ -5,7 +5,7 @@ import com.hms.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Profile;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-@Profile({"dev", "test"})
+
 public class DataInitializer implements CommandLineRunner {
 
     @Value("${app.enable-demo-accounts:false}")
@@ -54,36 +54,48 @@ public class DataInitializer implements CommandLineRunner {
         seedMedicalRecords();
     }
 
-    private void seedUsers() {
-        if (userRepository.count() == 0) {
-            User admin = User.builder()
-                    .email("admin@hospital.com")
-                    .password(passwordEncoder.encode("admin123"))
-                    .name("Dr. Administrator")
-                    .role("ADMIN")
-                    .avatar("https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop&crop=face")
-                    .build();
+    
+private void seedUsers() {
 
-            User doctor = User.builder()
-                    .email("doctor@hospital.com")
-                    .password(passwordEncoder.encode("doctor123"))
-                    .name("Dr. Michael Chen")
-                    .role("DOCTOR")
-                    .specialization("Interventional Cardiology")
-                    .departmentId(1L)
-                    .avatar("https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face")
-                    .build();
+    if (!userRepository.existsByEmail("admin@hospital.com")) {
+        User admin = User.builder()
+                .email("admin@hospital.com")
+                .password(passwordEncoder.encode("admin123"))
+                .name("Dr. Administrator")
+                .role("ADMIN")
+                .avatar("https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop&crop=face")
+                .build();
 
-            User receptionist = User.builder()
-                    .email("receptionist@hospital.com")
-                    .password(passwordEncoder.encode("reception123"))
-                    .name("Sarah Wilson")
-                    .role("RECEPTIONIST")
-                    .avatar("https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face")
-                    .build();
+        userRepository.save(admin);
+    }
 
-            userRepository.saveAll(Arrays.asList(admin, doctor, receptionist));
-        }
+    if (!userRepository.existsByEmail("doctor@hospital.com")) {
+        User doctor = User.builder()
+                .email("doctor@hospital.com")
+                .password(passwordEncoder.encode("doctor123"))
+                .name("Dr. Michael Chen")
+                .role("DOCTOR")
+                .specialization("Interventional Cardiology")
+                .departmentId(1L)
+                .avatar("https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face")
+                .build();
+
+        userRepository.save(doctor);
+    }
+
+    if (!userRepository.existsByEmail("receptionist@hospital.com")) {
+        User receptionist = User.builder()
+                .email("receptionist@hospital.com")
+                .password(passwordEncoder.encode("reception123"))
+                .name("Sarah Wilson")
+                .role("RECEPTIONIST")
+                .avatar("https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face")
+                .build();
+
+        userRepository.save(receptionist);
+    }
+}
+
     }
 
     private void seedDepartments() {
