@@ -96,7 +96,6 @@ private void seedUsers() {
     }
 }
 
-    }
 
     private void seedDepartments() {
         if (departmentRepository.count() == 0) {
