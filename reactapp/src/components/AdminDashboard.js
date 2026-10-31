@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useHospital } from '../context/HospitalContext';
 import { EmptyAppointments } from './HealthcareIllustrations';
 

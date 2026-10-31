@@ -1,4 +1,4 @@
-﻿import React, { useContext } from 'react';
+import React, { useContext } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { HospitalContext } from '../context/PatientContext';
 import { useHistory } from 'react-router-dom';

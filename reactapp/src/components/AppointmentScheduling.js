@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useHospital } from '../context/HospitalContext';
 import { useToast } from './Toast';
 

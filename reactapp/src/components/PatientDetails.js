@@ -1,4 +1,4 @@
-﻿import React, { useContext } from "react";
+import React, { useContext } from "react";
 import { HospitalContext } from "../context/PatientContext";
 import { useParams, useHistory } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Lottie from 'lottie-react';
 
 // Professional medical success animation data (inline for simplicity)

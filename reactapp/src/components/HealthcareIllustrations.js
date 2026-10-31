@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 // Premium Healthcare Illustration Components
 export const HospitalDashboardHero = ({ className = "w-full h-full" }) => (

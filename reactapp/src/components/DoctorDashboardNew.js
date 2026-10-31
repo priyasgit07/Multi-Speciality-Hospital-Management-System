@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useHospital } from '../context/HospitalContext';
 import { useAuth } from '../context/AuthContext';
 import { PremiumDoctorPortrait } from './PremiumDoctorIllustrations';

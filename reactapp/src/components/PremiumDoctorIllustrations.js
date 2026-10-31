@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 // Premium Friendly Doctor for Login Page
 export const FriendlyDoctorLogin = ({ className = "w-full h-full" }) => (
